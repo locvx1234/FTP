@@ -34,5 +34,20 @@ Bên cạnh đó, phía Client còn có thêm giao diện người dùng (user i
 
 ## 3. Cài đặt và cấu hình 
 
+##### Sử dụng giao diện console
 
-## 4. 
+
+##### Browser
+
+
+##### File zilla
+
+
+## 4. Tham khảo
+
+Book : Computer Networking A Top-Down Approach 6th-edition - Kurose Ross.
+
+http://sinhvienit.net/forum/tim-hieu-ve-giao-thuc-ftp.28754.html
+
+http://thachpham.com/hosting-domain/ftp-la-gi.html
+
