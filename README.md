@@ -34,11 +34,68 @@ Bên cạnh đó, phía Client còn có thêm giao diện người dùng (user i
 
 ## 3. Cài đặt và cấu hình 
 
-##### Sử dụng giao diện console
+Để sử dụng dịch vụ FTP, Linux sử dụng gói phần mềm có tên : **vsftpd**
 
+#####Cài đặt trên Ubuntu : 
+
+	sudo apt-get install vsftpd
+	
+#####Cấu hình vsftpd :
+
+	sudo vi /etc/vsftpd.conf
+
+#####Một số thông số cần lưu ý : 
+
+- Tắt truy cập ẩn danh :
+
+	anonymous_enable=NO 
+
+- Bỏ ghi chú ở tùy chọn `local_enable` và cho phép người dùng ghi vào thư mục :
+
+	local_enable=YES
+	
+	write_enable=YES
+	
+- Bỏ ghi chú ở `chroot_local_user` , tất cả user sẽ hoạt động trong `chroot` của họ và sẽ không được quyền truy cập vào các phần khác của server.
+
+	chroot_local_user=YES
+
+#####Cấp quyền truy cập 
+
+- Tạo một thư mục mới bên trong `home`:
+
+	mkdir /home/username/files
+	
+- Thay đổi quyền truy cập file như `root`: 
+	
+	chown root:root /home/username
+	
+- Tạo những thay đổi cần thiết trong thư mục con
+
+##### Sau tất cả, chúng ta cần restart dịch vụ để những thay đổi có hiệu lực :
+
+	 sudo service vsftpd restart
+
+### Truy cập vào FTP server
+
+Do firewall trên máy chủ không cho phép dịch vụ FTP nên ta tắt firewall bằng lệnh :
+
+	$ sudo ufw disable
+	
+##### Sử dụng giao diện console
+Dùng Command Line ftp tới một máy chủ :
+
+	> ftp host
+
+<img src="http://i.imgur.com/3JlrouO.png">
+
+Sử dụng `help` để xem các lệnh hỗ trợ
 
 ##### Browser
 
+Nhập ftp://host để thiết lập kết nối ftp đến server 
+
+<img src="http://i.imgur.com/LdjW5J2.png">
 
 ##### File zilla
 
