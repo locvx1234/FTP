@@ -98,7 +98,9 @@ Nhập ftp://host để thiết lập kết nối ftp đến server
 <img src="http://i.imgur.com/LdjW5J2.png">
 
 ##### File zilla
+Nhập Host, Username, Password, và Port = 21. Sau đó Quickconnect
 
+<img src="http://i.imgur.com/cDdEeM3.png">
 
 ## 4. Tham khảo
 
