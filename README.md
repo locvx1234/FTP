@@ -50,7 +50,7 @@ Bên cạnh đó, phía Client còn có thêm giao diện người dùng (user i
 
 	anonymous_enable=NO 
 
-- Bỏ ghi chú ở tùy chọn `local_enable` và cho phép người dùng ghi vào thư mục :
+- Bỏ ghi chú ở tùy chọn `local_enable` và cho phép người dùng cục bộ truy cập và ghi vào thư mục :
 
 	local_enable=YES
 	
@@ -59,6 +59,31 @@ Bên cạnh đó, phía Client còn có thêm giao diện người dùng (user i
 - Bỏ ghi chú ở `chroot_local_user` , tất cả user sẽ hoạt động trong `chroot` của họ và sẽ không được quyền truy cập vào các phần khác của server.
 
 	chroot_local_user=YES
+
+- Các thông số khác
+
+listen=YES/NO : Chế độ standalone, với các vsftpd đơn lẻ phải để YES, nếu không sẽ không thể khởi động được 
+
+anonymous_enable=YES/NO : anonymous được phép login vào FTP Server
+
+anon_upload_enable=YES/NO : kết hợp với write_enable=YES thì anonymous được phép upload tập tin trong thư mục cha có quyền ghi
+
+anon_mkdir_write_enable=YES/NO : kết hợp với write_enable=YES thì anonymous được phép tạo thư mục mới trong thư mục cha có quyền ghi
+
+dirmessage_enable=YES/NO : hiển thi ra 1 thông điệp khi người dùng di chuyển vào thư mục
+
+chown_uploads=YES/NO : tất cả những tập tin được upload bởi user anonymous được sở hữu bởi user được chỉ ra trong chown_username
+
+chown_username : chỉ ra user sở hữu những tập tin được upload bởi user anonymous (mặc định là user root)
+
+chroot_local_user=YES/NO : người dùng di chuyển đến home directory của mình sau khi login vào
+
+
+
+#####Một số file khác 
+
+- /etc/vsftpd.ftpusers: Những user không được phép login vào **vsftpd**
+- /etc/vsftpd.user_list: Cấu hình để cấm hoặc cho phép người dùng được truy cập FTP server. (Phụ thuộc vào `userlist_deny` trong file cấu hình)
 
 #####Cấp quyền truy cập 
 
@@ -75,6 +100,45 @@ Bên cạnh đó, phía Client còn có thêm giao diện người dùng (user i
 ##### Sau tất cả, chúng ta cần restart dịch vụ để những thay đổi có hiệu lực :
 
 	 sudo service vsftpd restart
+
+##### Một số lab 
+
+- Cho phép anonymous được phép truy cập FTP server
+
+		anonymous_enable=YES
+
+- Thay đổi thư mục gốc của FTP Server thành /data/ftp
+	
+Sau khi tạo thư mục cần thay đổi, thêm vào cuối file cấu hình : 
+	
+	anon_root=/data/ftp
+
+- Anonymous được upload file trong /data/ftp/upload
+
+```	
+write_enable=YES
+anon_upload_enable=YES
+```
+
+Cấp quyền cho nó 
+	
+	#chmod 757 /data/ftp/upload
+
+- Anonymous được upload directory trong /data/ftp/upload
+
+```
+write_enable=YES
+anon_mkdir_write=YES
+```
+
+- Các user local login vào Ftp Server
+
+	local_enable=YES
+
+- Cấm user locvx login vào server
+
+Thêm locvx vào cuối file /etc/ftpusers (danh sách các user bị chặn)
+
 
 ### Truy cập vào FTP server
 
@@ -109,4 +173,6 @@ Book : Computer Networking A Top-Down Approach 6th-edition - Kurose Ross.
 http://sinhvienit.net/forum/tim-hieu-ve-giao-thuc-ftp.28754.html
 
 http://thachpham.com/hosting-domain/ftp-la-gi.html
+
+http://kenhgiaiphap.vn/Detail/1132/Cau-hinh-ftp-server-voi-vsftpd.html
 
