@@ -85,21 +85,45 @@ chroot_local_user=YES/NO : người dùng di chuyển đến home directory củ
 - /etc/vsftpd.ftpusers: Những user không được phép login vào **vsftpd**
 - /etc/vsftpd.user_list: Cấu hình để cấm hoặc cho phép người dùng được truy cập FTP server. (Phụ thuộc vào `userlist_deny` trong file cấu hình)
 
-#####Cấp quyền truy cập 
-
-- Tạo một thư mục mới bên trong `home`:
-
-	mkdir /home/username/files
-	
-- Thay đổi quyền truy cập file như `root`: 
-	
-	chown root:root /home/username
-	
-- Tạo những thay đổi cần thiết trong thư mục con
-
 ##### Sau tất cả, chúng ta cần restart dịch vụ để những thay đổi có hiệu lực :
 
 	 sudo service vsftpd restart
+	 
+#####Tạo thư mục và phân quyền truy cập 
+
+- Tạo một thư mục mới bên trong `home`:
+
+	mkdir /home/ftp
+
+- Tạo 2 thư mục cho 2 user 
+
+	mkdir /home/ftp/user1_dir
+	
+	mkdir /home/ftp/user2_dir
+
+- Tạo 2 tài khoản 
+
+	useradd -d /home/ftp/user1_dir user1_dir
+	
+	passwd user1
+	
+	useradd -d /home/ftp/user1_dir user2_dir
+	
+	passwd user2
+	
+- Thay đổi quyền sở hữu: 
+	
+	chown -R user1:user1 /home/ftp/user1_dir user1
+	
+	chown -R user2:user2 /home/ftp/user2_dir user2
+
+- Cấp quyền truy cập cho từng user để user này không đọc được dữ liệu của user khác 
+
+	chmod 750 /home/ftp/user1_dir user1
+	
+	chmod 750 /home/ftp/user1_dir user2
+	
+- Tạo những thay đổi cần thiết trong thư mục con
 
 ##### Một số lab 
 
