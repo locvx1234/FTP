@@ -121,7 +121,7 @@ chroot_local_user=YES/NO : người dùng di chuyển đến home directory củ
 
 	chmod 750 /home/ftp/user1_dir user1
 	
-	chmod 750 /home/ftp/user1_dir user2
+	chmod 750 /home/ftp/user2_dir user2
 	
 - Tạo những thay đổi cần thiết trong thư mục con
 
