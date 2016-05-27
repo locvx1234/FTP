@@ -117,7 +117,7 @@ chroot_local_user=YES/NO : người dùng di chuyển đến home directory củ
 	
 		chown -R user2:user2 /home/ftp/user2_dir user2
 
-- Cấp quyền truy cập cho từng user để user này không đọc được dữ liệu của user khác 
+- Thay đổi quyền truy cập cho từng user 
 
 		chmod 750 /home/ftp/user1_dir user1
 	
@@ -125,6 +125,20 @@ chroot_local_user=YES/NO : người dùng di chuyển đến home directory củ
 	
 - Tạo những thay đổi cần thiết trong thư mục con
 
+##### Giới hạn kết nối 
+
+- Tốc độ truyền dữ liệu tối đa
+
+		local_max_rate=10000
+
+- Số client tối đa
+
+		max_clients=50  
+
+- Số kết nối tối đa cho mỗi IP
+
+		max_per_ip=2	
+		
 ##### Một số lab 
 
 - Cho phép anonymous được phép truy cập FTP server
@@ -200,3 +214,4 @@ http://thachpham.com/hosting-domain/ftp-la-gi.html
 
 http://kenhgiaiphap.vn/Detail/1132/Cau-hinh-ftp-server-voi-vsftpd.html
 
+https://wiki.archlinux.org/index.php/Very_Secure_FTP_Daemon
