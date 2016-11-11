@@ -36,6 +36,9 @@ Bên cạnh đó, phía Client còn có thêm giao diện người dùng (user i
 
 Để sử dụng dịch vụ FTP, Linux sử dụng gói phần mềm có tên : **vsftpd**
 
+#####Cài đặt trên CentOS 7 : 
+
+
 #####Cài đặt trên Ubuntu : 
 
 	sudo apt-get install vsftpd
@@ -103,25 +106,25 @@ chroot_local_user=YES/NO : người dùng di chuyển đến home directory củ
 
 - Tạo 2 tài khoản 
 
-		useradd -d /home/ftp/user1_dir user1_dir
+		useradd -d /home/ftp/user1_dir user1
 	
 		passwd user1
 	
-		useradd -d /home/ftp/user1_dir user2_dir
+		useradd -d /home/ftp/user1_dir user2
 	
 		passwd user2
 	
 - Thay đổi quyền sở hữu: 
 	
-		chown -R user1:user1 /home/ftp/user1_dir user1
+		chown -R user1:user1 /home/ftp/user1_dir 
 	
-		chown -R user2:user2 /home/ftp/user2_dir user2
+		chown -R user2:user2 /home/ftp/user2_dir 
 
 - Thay đổi quyền truy cập cho từng user 
 
-		chmod 750 /home/ftp/user1_dir user1
+		chmod 750 /home/ftp/user1_dir 
 	
-		chmod 750 /home/ftp/user2_dir user2
+		chmod 750 /home/ftp/user2_dir 
 	
 - Tạo những thay đổi cần thiết trong thư mục con
 
@@ -160,7 +163,7 @@ anon_upload_enable=YES
 
 Cấp quyền cho nó 
 	
-	#chmod 757 /data/ftp/upload
+	#chmod 755 /data/ftp/upload
 
 - Anonymous được upload directory trong /data/ftp/upload
 
@@ -204,7 +207,22 @@ Nhập Host, Username, Password, và Port = 21. Sau đó Quickconnect
 
 <img src="http://i.imgur.com/cDdEeM3.png">
 
-## 4. Tham khảo
+## 4. Bắt gói tin FTP bằng Wireshark
+
+Khi kết nối với máy chủ ftp (192.168.175.128) qua port 21
+
+Nếu thành công sẽ nhận được respond 220 và sau đó là quá trình xác thực bằng username và password.
+
+<img src="http://i.imgur.com/ctmacB2.png">
+
+Khi copy file từ client lên server, ta thấy rằng port nhận không phải lúc nào cũng là 20 như mô tả ở trên.
+
+Điều này liên quan đến 2 chế độ hoạt động của FTP server là Active FTP và Passive FTP. 
+
+<img src="http://i.imgur.com/3stBfiO.png">
+
+
+## 5. Tham khảo
 
 Book : Computer Networking A Top-Down Approach 6th-edition - Kurose Ross.
 
