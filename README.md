@@ -37,7 +37,7 @@ Bên cạnh đó, phía Client còn có thêm giao diện người dùng (user i
 Để sử dụng dịch vụ FTP, Linux sử dụng gói phần mềm có tên : **vsftpd**
 
 #####Cài đặt trên CentOS 7 : 
-
+https://github.com/locvx1234/FTP/blob/master/install_configue_manual_vsftpd_centos7.md
 
 #####Cài đặt trên Ubuntu : 
 
