@@ -1,9 +1,23 @@
 # FTP
 Ghi chép về giao thức FTP
 
+## Mục lục 
+
+[1. FTP là gì?](#what)
+
+[2. Hoạt động](#activity)
+
+[3. Cài đặt và cấu hình](#install)
+
+[4. Bắt gói tin FTP bằng Wireshark](#wireshark)
+
+[5. Tham khảo](#reference)
+
+<a name="what"></a>
 ## 1. FTP là gì ?
 FTP (File Transfer Protocol) là giao thức trao đổi tập tin qua mạng lưới truyền thông, được định nghĩa trong [RFC-959](https://tools.ietf.org/html/rfc959). FTP được xây dựng trên kiến trúc client-server và sử dụng kết nối riêng biệt giữa hai luồng điểu khiển và dữ liệu. Người dụng có thể xác thực bằng cách sử dụng username và password, cũng có thể sử dụng kết nối nặc danh nếu máy chủ cấu hình cho phép điều đó.
 
+<a name="activity"></a>
 ## 2. Hoạt động 
 
 <img src="http://i.imgur.com/V0yYH2j.png">
@@ -31,7 +45,7 @@ Bên cạnh đó, phía Client còn có thêm giao diện người dùng (user i
 - Khi server nhận được lệnh, nó mở cổng 20 để truyền file
 - Khi truyền xong một file, server đóng kết nối dữ liệu
 
-
+<a name="install"></a>
 ## 3. Cài đặt và cấu hình 
 
 Để sử dụng dịch vụ FTP, Linux sử dụng gói phần mềm có tên : **vsftpd**
@@ -207,6 +221,7 @@ Nhập Host, Username, Password, và Port = 21. Sau đó Quickconnect
 
 <img src="http://i.imgur.com/cDdEeM3.png">
 
+<a name="wireshark"></a>
 ## 4. Bắt gói tin FTP bằng Wireshark
 
 Khi kết nối với máy chủ ftp (192.168.175.128) qua port 21
@@ -221,7 +236,7 @@ Khi copy file từ client lên server, ta thấy rằng port nhận không phả
 
 <img src="http://i.imgur.com/3stBfiO.png">
 
-
+<a name="reference"></a>
 ## 5. Tham khảo
 
 Book : Computer Networking A Top-Down Approach 6th-edition - Kurose Ross.
